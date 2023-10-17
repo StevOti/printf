@@ -15,6 +15,7 @@ int  _printf(const char *format, ...)
 	char *str_arg, c;
 	int char_count = 0;
 	int ival;
+	unsigned int uval = 0, uval_len = 0, uval_2 = 0;
 
 	va_start(char_list, format);
 	for (; *format; format++)
@@ -43,7 +44,25 @@ int  _printf(const char *format, ...)
 					char_count += write(1, print_int(ival, 10), _strlen(print_int(ival, 10)));
 					break;
 
-
+				case 'b':
+					uval = va_arg(char_list, unsigned int);
+					ival = 0;
+					uval_2 = uval;
+					while (uval_2 >= 2)
+					{
+						uval_2 = uval_2 >> 1;
+						uval_len++;
+					}
+					for (ival = (int)uval_len; ival >= 0; ival--)
+					{
+						c = uval & (1u << ival) ? '1' : '0';
+						char_count += write(1, &c, 1);
+					}
+					break;
+				case '%':
+					c = '%';
+					char_count += write(1, &c, 1);
+					break;	
 				default:
 					char_count += write(1, --format, 1);
 					char_count += write(1, ++format, 1);
