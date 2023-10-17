@@ -1,10 +1,18 @@
 #include "main.h"
 #include <stdlib.h>
 
-void * print_integer(int n, int base)
+/**
+ * print_int - function converts int to str
+ * @n: int input
+ * @base: int input
+ * Return: pointer to str
+ */
+
+void *print_int(int n, int base)
 {
 	char *s;
 	int len = 0, num, i, sign = 0;
+
 	num = n;
 
 	if (n < 0)
@@ -15,7 +23,7 @@ void * print_integer(int n, int base)
 	}
 	while (n != 0)
 	{
-        	len++;
+		len++;
 		n /= base;
 	}
 
@@ -30,6 +38,6 @@ void * print_integer(int n, int base)
 	{
 		*--s = '-';
 	}
-	*(s + len + 1) ='\0';
-	return(s);
+	*(s + len + 1) = '\0';
+	return (s);
 }

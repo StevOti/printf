@@ -36,11 +36,11 @@ int  _printf(const char *format, ...)
 					break;
 				case 'd':
 					ival = va_arg(char_list, int);
-					char_count += write(1, print_integer(ival, 10), _strlen(print_integer(ival, 10)));
+					char_count += write(1, print_int(ival, 10), _strlen(print_int(ival, 10)));
 					break;
-				 case 'i':
+				case 'i':
 					ival = va_arg(char_list, int);
-					char_count += write(1, print_integer(ival, 10), _strlen(print_integer(ival, 10)));
+					char_count += write(1, print_int(ival, 10), _strlen(print_int(ival, 10)));
 					break;
 
 
