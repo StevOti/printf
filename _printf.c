@@ -45,6 +45,8 @@ int  _printf(const char *format, ...)
 
 
 				default:
+					char_count += write(1, --format, 1);
+					char_count += write(1, ++format, 1);
 					break;
 			}
 		}
