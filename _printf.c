@@ -43,6 +43,14 @@ int  _printf(const char *format, ...)
 					ival = va_arg(char_list, int);
 					char_count += write(1, print_int(ival, 10), _strlen(print_int(ival, 10)));
 					break;
+				case 'u':
+					ival = va_arg(char_list, int);
+					char_count += write(1, print_int(ival, 10), _strlen(print_int(ival, 10)));
+					break;
+				case 'o':
+					ival = va_arg(char_list, int);
+					char_count += write(1, print_int(ival, 8), _strlen(print_int(ival, 8)));
+					break;
 
 				case 'b':
 					uval = va_arg(char_list, unsigned int);
