@@ -14,6 +14,7 @@ int  _printf(const char *format, ...)
 	va_list char_list;
 	char *str_arg, c;
 	int char_count = 0;
+	int ival;
 
 	va_start(char_list, format);
 	for (; *format; format++)
@@ -33,6 +34,16 @@ int  _printf(const char *format, ...)
 					c = (char)va_arg(char_list, int);
 					char_count += write(1, &c, 1);
 					break;
+				case 'd':
+					ival = va_arg(char_list, int);
+					char_count += write(1, print_integer(ival, 10), _strlen(print_integer(ival, 10)));
+					break;
+				 case 'i':
+					ival = va_arg(char_list, int);
+					char_count += write(1, print_integer(ival, 10), _strlen(print_integer(ival, 10)));
+					break;
+
+
 				default:
 					break;
 			}
